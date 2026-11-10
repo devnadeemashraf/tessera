@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tessera:health:v1",
+  "title": "Liveness response (not database readiness)",
+  "type": "object",
+  "properties": { "status": { "const": "ok" } },
+  "required": ["status"],
+  "additionalProperties": false
+}

@@ -1,0 +1,6 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Downloaded dependencies, scanner binaries, caches and generated coverage only"
+paths = ['''(^|[/\\])(node_modules|\.tools|\.cache|coverage|\.git)([/\\]|$)''']

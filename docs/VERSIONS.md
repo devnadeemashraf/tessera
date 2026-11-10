@@ -3,17 +3,20 @@
 Verification date: 2026-11-10; pins in executable manifests are authoritative; future frameworks are not installed until their scoped spike verifies them.
 Go 1.27.3 — installed and official stable release verified; BSD-3-Clause; https://go.dev/dl/?mode=json and https://go.dev/LICENSE.
 Node 24.22.0 — installed; official release checksum list verified; maintained LTS line, MIT with bundled notices; https://nodejs.org/dist/v24.22.0/SHASUMS256.txt and https://github.com/nodejs/node/blob/main/LICENSE.
-npm 11.19.1 — installed with Node; Artistic-2.0; exact package verification belongs to P0-02; https://github.com/npm/cli/blob/latest/LICENSE.
+npm 11.19.1 — installed with Node; Artistic-2.0 verified against tagged source; https://github.com/npm/cli/blob/v11.19.1/LICENSE.
 just 1.59.0 — installed; CC0-1.0; https://github.com/casey/just/releases/tag/1.59.0 and https://github.com/casey/just/blob/master/LICENSE.
 mise 2026.10.19 — installed; MIT; optional toolchain installer; https://github.com/jdx/mise/releases/tag/v2026.10.19 and https://github.com/jdx/mise/blob/main/LICENSE.
 Prettier 3.9.10 / ESLint 10.14.0 / @eslint/js 10.0.1 / fast-check 4.10.2 — current public npm metadata verified, MIT; registry.npmjs.org package metadata and upstream LICENSE files.
 TypeScript 7.0.2 — current public npm metadata verified, Apache-2.0; https://registry.npmjs.org/typescript/latest.
 c8 12.0.0 — current public npm metadata verified, ISC; https://github.com/bcoe/c8 and npm metadata.
-@types/node 24.19.2 — available Node-24 declarations verified; MIT, verify license on installation; https://www.npmjs.com/package/@types/node.
+glob 14.0.2 / minimatch 11.0.1 — verified maintained upstream releases and npm engine compatibility with Node 24; BlueOak-1.0.0; transitive security overrides for CVE-2026-118773 / CVE-2026-118764; https://github.com/isaacs/node-glob/releases/tag/v14.0.2 and https://github.com/isaacs/minimatch/releases/tag/v11.0.1.
+@types/node 24.19.2 — available Node-24 declarations verified and installed; MIT in installed metadata; https://www.npmjs.com/package/@types/node.
 Gitleaks 8.30.1 — maintained release verified, MIT CLI (not paid hosted action); https://github.com/gitleaks/gitleaks/releases/tag/v8.30.1 and repository LICENSE.
 Trivy 0.76.2 — maintained release verified, Apache-2.0; https://github.com/aquasecurity/trivy/releases/tag/v0.76.2 and repository LICENSE.
 gosec 2.30.0 — maintained release verified, Apache-2.0; https://github.com/securego/gosec/releases/tag/v2.30.0 and repository LICENSE.txt.
-GitHub actions/checkout 7.0.1, setup-node 7.1.0, setup-go 7.0.0 — official latest releases verified; MIT; immutable commit pins and licenses verified in P0-02.
+GitHub actions/checkout 7.0.1, setup-node 7.1.0, setup-go 7.0.0 — official releases and immutable commit IDs verified through GitHub API; MIT; check.yml pins exact revisions.
+GitHub Free public repositories support protected branches and required status checks — verified official docs; https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches.
+License texts — authoritative AGPL/GPL/MPL texts fetched 2026-11-10 from https://www.gnu.org/licenses/agpl-3.0.txt, https://www.gnu.org/licenses/gpl-3.0.txt and https://www.mozilla.org/media/MPL/2.0/index.f75d2927d3c1.txt; retained in LICENSES.
 Render Free — sleeps after 15 idle minutes, cold start about one minute, ephemeral filesystem, 750 instance hours/workspace/month; Free Postgres expires after 30 days; provider discourages production use; https://render.com/docs/free.
 Neon Free — non-expiring, no card required, 1 GB storage and 100 CU-hours per project/month at verification; shared service capacity is finite; https://neon.com/pricing.
 Cloudflare Pages / GitHub Releases — free static hosting and binary distribution selected; current account limits must be verified at P0-06 before deployment; https://developers.cloudflare.com/pages/platform/limits/ and https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases.

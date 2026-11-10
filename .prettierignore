@@ -1,0 +1,11 @@
+node_modules
+.tools
+.cache
+coverage
+dist
+build
+go.sum
+docs/TESSERA_SPEC.md
+docs/PROJECT_SCAFFOLD.md
+LICENSES
+.github/pull_request_template.md

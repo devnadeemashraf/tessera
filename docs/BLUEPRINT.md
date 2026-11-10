@@ -3,6 +3,7 @@
 Only Phase 0 is detailed. An open item remains open until its PR is merged; then replace its block with `ID — title — PR #number`. Work in S/M slices; split any item exceeding four sessions. No invented PR numbers. Scope fields below are machine-readable: literal backtick globs on the `Files in scope:` line, with exact `*`/`**` matching.
 
 ## P0-01 — Canonical development kit
+
 Type: chore
 Spec: 1–13
 Depends on: none
@@ -16,6 +17,7 @@ Acceptance: document checks in `node tools/task.mjs check` after P0-02; before t
 Manual check: read SPEC 7–10 and confirm approved commercial/hosting choices; initial local commit is on a feature branch.
 
 ## P0-02 — Reproducible tooling and Go liveness skeleton
+
 Type: chore
 Spec: 8, 9, 11, 12
 Depends on: P0-01
@@ -29,6 +31,7 @@ Acceptance: `just check`; `just doctor`; `just brief`; `just map`.
 Manual check: run `go run ./cmd/server` and request http://localhost:8080/healthz; verify `just check` fails for an unauthorized temporary file, then remove that file.
 
 ## P0-03 — Shared UI and native binding feasibility
+
 Type: feat
 Spec: 2–5, 10–12
 Depends on: P0-02
@@ -42,6 +45,7 @@ Acceptance: `just check` plus native smoke commands recorded by the spike at ver
 Manual check: launch Windows and Android shells; observe the same synthetic roundtrip; record iPhone/Mac build prerequisites.
 
 ## P0-04 — Native protection and consent spike
+
 Type: test
 Spec: 2, 4, 5, 11
 Depends on: P0-03
@@ -55,6 +59,7 @@ Acceptance: `just check` and native tests; required hardware capability failures
 Manual check: approve, deny, cancel and lock during a request on Android and Windows; inspect native prompts and sentinel absence in frontend storage.
 
 ## P0-05 — Browser-to-native origin proof
+
 Type: feat
 Spec: 4, 11, 12
 Depends on: P0-04
@@ -68,6 +73,7 @@ Acceptance: `just check` plus Chrome, Edge and Firefox native integration suite.
 Manual check: perform positive and deceptive-origin fills in each browser using synthetic test pages.
 
 ## P0-06 — Free hosting and merchant qualification
+
 Type: chore
 Spec: 7–10, 13
 Depends on: P0-02
@@ -81,6 +87,7 @@ Acceptance: `just check` and real hosting smoke evidence in HANDBOOK; record pro
 Manual check: owner connects accounts, reviews zero-cost billing settings, verifies HTTPS and provider eligibility; no credentials pasted into chat.
 
 ## P0-07 — Frozen storage and protocol contracts
+
 Type: feat
 Spec: 5, 6, 8, 9, 11, 12
 Depends on: P0-04, P0-06
@@ -94,6 +101,7 @@ Acceptance: `just check` plus independently reviewed fixture provenance and nati
 Manual check: review recovery and key-loss behavior, formats and error messages before implementation.
 
 ## P0-08 — Smallest encrypted local vault
+
 Type: feat
 Spec: 3, 5, 11, 12
 Depends on: P0-07
@@ -107,6 +115,7 @@ Acceptance: `just check`, bounded fuzzing and native synthetic-vault roundtrip.
 Manual check: save synthetic login, lock/restart, restore on clean install, then try wrong password and corrupt backup.
 
 ## P0-09 — Google identity and device enrollment
+
 Type: feat
 Spec: 5, 6, 8, 9, 11
 Depends on: P0-08
@@ -120,6 +129,7 @@ Acceptance: `just check` and real test-account sign-in using configured redirect
 Manual check: sign in on two test installs, revoke one, verify local access remains and server sync stops.
 
 ## P0-10 — Durable two-client encrypted sync
+
 Type: feat
 Spec: 6–9, 11, 12
 Depends on: P0-09
@@ -133,6 +143,7 @@ Acceptance: `just check` plus Go race tests and two-client offline/reconnect smo
 Manual check: edit offline on both installs, reconnect through an API restart, inspect convergence and history.
 
 ## P0-11 — Deployed walking-skeleton gate
+
 Type: chore
 Spec: 8, 10–13
 Depends on: P0-05, P0-10

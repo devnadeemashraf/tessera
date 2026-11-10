@@ -12,7 +12,7 @@ The approved design uses Go, React/TypeScript, Capacitor, Wails, Render and Neon
 2. Run `npm ci --ignore-scripts`, then `node tools/bootstrap.mjs` to install checksum-verified local scanner binaries.
 3. Run `git config core.hooksPath .githooks`, then `just doctor` and `just check`.
 
-Tooling arrives in P0-02. Setup needs network access to public registries and scanner vulnerability databases. Missing prerequisites fail explicitly.
+Setup needs network access to public registries and scanner vulnerability databases. Missing prerequisites fail explicitly. Windows and Linux x64 scanner bootstrap are supported; Apple tooling is qualified separately.
 
 ## Commands
 
@@ -21,7 +21,7 @@ Tooling arrives in P0-02. Setup needs network access to public registries and sc
 - `just fmt`: format repository sources.
 - `just brief`: print handoff and next eligible blueprint item.
 - `just map`: generate files and public-symbol navigation.
-- `go run ./cmd/server`: start the liveness-only development server after P0-02.
+- `go run ./cmd/server`: start the liveness-only development server at `http://localhost:8080/healthz` (override with `PORT`).
 
 Every just command also works as `node tools/task.mjs <command>`.
 
@@ -29,6 +29,7 @@ Every just command also works as `node tools/task.mjs <command>`.
 
 Read `AGENTS.md`, then follow `just brief`. Product requirements live in `docs/SPEC.md`; PR ordering lives in `docs/BLUEPRINT.md`. Supplied input specs remain unchanged for reference.
 Work on feature branches. The owner merges. Initial commits can remain local until a GitHub remote exists.
+Tooling is MIT; server code is AGPL-3.0-only. Planned client/core licenses and official texts are recorded in SPEC and `LICENSES/`.
 
 ## Publishing prerequisites
 
