@@ -11,6 +11,7 @@ TypeScript 7.0.2 — current public npm metadata verified, Apache-2.0; https://r
 c8 12.0.0 — current public npm metadata verified, ISC; https://github.com/bcoe/c8 and npm metadata.
 glob 14.0.2 / minimatch 11.0.1 — verified maintained upstream releases and npm engine compatibility with Node 24; BlueOak-1.0.0; transitive security overrides for CVE-2026-118773 / CVE-2026-118764; https://github.com/isaacs/node-glob/releases/tag/v14.0.2 and https://github.com/isaacs/minimatch/releases/tag/v11.0.1.
 @types/node 24.19.2 — available Node-24 declarations verified and installed; MIT in installed metadata; https://www.npmjs.com/package/@types/node.
+Dependabot policy — owner-directed manual updates; open-pull-requests-limit: 0 disables version-update PRs, not security-update PRs; the latter are separately disabled via repository settings; https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#open-pull-requests-limit.
 Gitleaks 8.30.1 — maintained release verified, MIT CLI (not paid hosted action); https://github.com/gitleaks/gitleaks/releases/tag/v8.30.1 and repository LICENSE.
 Trivy 0.76.2 — maintained release verified, Apache-2.0; https://github.com/aquasecurity/trivy/releases/tag/v0.76.2 and repository LICENSE.
 gosec 2.30.0 — maintained release verified, Apache-2.0; https://github.com/securego/gosec/releases/tag/v2.30.0 and repository LICENSE.txt.
