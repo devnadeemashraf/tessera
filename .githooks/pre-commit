@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+node tools/task.mjs protect
+node tools/task.mjs fmt
+git diff --exit-code -- . ':!docs/TESSERA_SPEC.md' ':!docs/PROJECT_SCAFFOLD.md' || {
+  echo 'Formatting or unstaged changes found. Review and stage deliberately, then retry.' >&2
+  exit 1
+}
