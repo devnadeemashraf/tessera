@@ -1,14 +1,18 @@
 version: 2
+# Owner-directed updates only. Security update PRs are separately disabled in repository settings.
 updates:
   - package-ecosystem: npm
     directory: /
+    open-pull-requests-limit: 0
     schedule:
       interval: weekly
   - package-ecosystem: gomod
     directory: /
+    open-pull-requests-limit: 0
     schedule:
       interval: weekly
   - package-ecosystem: github-actions
     directory: /
+    open-pull-requests-limit: 0
     schedule:
       interval: weekly

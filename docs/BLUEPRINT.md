@@ -2,33 +2,36 @@
 
 Only Phase 0 is detailed. An open item remains open until its PR is merged; then replace its block with `ID — title — PR #number`. Work in S/M slices; split any item exceeding four sessions. No invented PR numbers. Scope fields below are machine-readable: literal backtick globs on the `Files in scope:` line, with exact `*`/`**` matching.
 
-## P0-01 — Canonical development kit
+P0-01 — Canonical development kit (bootstrap accepted with scaffold) — PR #1
+P0-02 — Reproducible tooling and Go liveness skeleton — PR #1
+
+## P0-12 — Restore proposed pins and require manual dependency updates
 
 Type: chore
-Spec: 1–13
-Depends on: none
+Spec: 11, 12
+Depends on: P0-02
 Size: S
 Risk: low
 Tier: any
-Decisions already made: preserve both input documents byte-for-byte; create exactly the seven required kit documents; record approved Go/TypeScript, Render/Neon and business changes. No product implementation in this item.
-Files in scope: `AGENTS.md` `README.md` `docs/SPEC.md` `docs/BLUEPRINT.md` `docs/HANDOFF.md` `docs/HANDBOOK.md` `docs/VERSIONS.md` `docs/TESSERA_SPEC.md` `docs/PROJECT_SCAFFOLD.md`
-Test cases: seven kit documents exist → no extra prose docs; AGENTS <=150, README <=60, HANDOFF <=40 lines → pass; HANDOFF has exactly four mandated headings → pass; each MUST maps to an item/epic → owner mapping in SPEC 12; original inputs unchanged → pass.
-Acceptance: document checks in `node tools/task.mjs check` after P0-02; before tooling exists, inspect line counts and source hashes.
-Manual check: read SPEC 7–10 and confirm approved commercial/hosting choices; initial local commit is on a feature branch.
+Decisions already made: owner requested no automatic dependency update PRs. Set all configured Dependabot version-update PR limits to zero; verify automatic security fixes are disabled separately. Preserve vulnerability alerts and scheduled CI scans. Restore @types/node 24.19.2 for Node 24.22.0 and retain every other proposed pin, including patched glob/minimatch overrides. Update merge/handoff records; no application behavior changes or new dependencies.
+Files in scope: `.github/dependabot.yml` `package.json` `package-lock.json`
+Test cases: restored manifest/lockfile/installed @types/node → 24.19.2; all other direct pins and overrides → unchanged; each configured ecosystem → zero version-update PR limit; repository automated-security-fixes → disabled; npm clean install, doctor and complete check → pass; merged bootstrap items → recognized complete by brief; no old branch/publication prerequisite remains in handoff.
+Acceptance: `npm ci --ignore-scripts`, `just doctor`, `just check`, `just brief`; inspect the three disabled PR limits and GitHub automated-security-fixes state. Existing checks suffice for this configuration-only change.
+Manual check: merge this maintenance PR before starting new feature work; verify GitHub's default-branch Dependabot configuration has zero PR limits. Subsequent dependency upgrades require an explicitly scoped item and review.
 
-## P0-02 — Reproducible tooling and Go liveness skeleton
+## P0-13 — Remove temporary-path dependence from gate-order assertions
 
-Type: chore
-Spec: 8, 9, 11, 12
-Depends on: P0-01
-Size: M
-Risk: high
-Tier: strong implementation plus fresh review before merge
-Decisions already made: Node-built task runner exposed by just; Prettier, ESLint/@eslint/js, TypeScript, @types/node, c8, fast-check; Go standard library only for liveness. Gitleaks CLI, Trivy filesystem dependency scan and gosec plus ESLint restricted unsafe APIs for SAST. Pinned public CLI binaries with SHA-256; no install scripts from dependencies. Git hooks are small versioned shell wrappers. No authentication, persistence, billing or crypto stubs pretending to work.
-Files in scope: `tools/**` `tests/tooling/**` `server/**` `cmd/server/**` `contracts/health.schema.json` `.github/**` `.githooks/**` `.editorconfig` `.gitattributes` `.gitignore` `.prettierignore` `.prettierrc.json` `.npmrc` `eslint.config.mjs` `tsconfig.json` `package.json` `package-lock.json` `go.mod` `go.sum` `mise.toml` `justfile` `LICENSES/**`
-Test cases: GET /healthz → exact schema response/no version or secrets; wrong method →405; unknown path →404; invalid port → startup rejects; headers/timeouts → bounded safe defaults. Invalid/unknown branch or out-of-scope path → guard fails; untracked path and rename destination → checked; test deletion/modification outside explicit item scope → fails; permitted test addition → passes. Missing/mismatched tools → doctor fails; missing coverage or uncovered changed line → fails; missing blueprint dependency/cycle/unsafe glob → fails; valid dependency order → next actionable item. Property-test glob/path handling. Empty scaffold check → all applicable gates run. No secrets in scanner output.
-Acceptance: `just check`; `just doctor`; `just brief`; `just map`.
-Manual check: run `go run ./cmd/server` and request http://localhost:8080/healthz; verify `just check` fails for an unauthorized temporary file, then remove that file.
+Type: test
+Spec: 11, 12
+Depends on: P0-12
+Size: S
+Risk: low
+Tier: any
+Decisions already made: preserve all existing ordering expectations. Compare exact tool executable/module argument identities rather than substrings of joined absolute command paths; temporary directories may contain any tool name. This is a test-harness correction, not a change to check order.
+Files in scope: `tests/tooling/tasks.test.mjs`
+Test cases: temporary root includes `c8`, `typescript` or `eslint` with correctly ordered stages → ordering assertions pass; same roots with deliberately swapped stages → assertions reject; actual task dispatch → unchanged expected format/lint/types/tests/security order. Reproduce the false failure deterministically before the fix.
+Acceptance: `just check`; deterministic stage-order regression passes without weakening or deleting existing assertions.
+Manual check: none.
 
 ## P0-03 — Shared UI and native binding feasibility
 
